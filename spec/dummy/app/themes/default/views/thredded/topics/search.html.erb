@@ -27,11 +27,7 @@
 
         <h1>
           <%= link_to topic.title,
-            paged_messageboard_topic_posts_path(
-              messageboard.slug,
-              topic.slug,
-              topic.farthest_page
-            )
+            messageboard_topic_posts_path(messageboard.slug, topic.slug)
           %>
         </h1>
 

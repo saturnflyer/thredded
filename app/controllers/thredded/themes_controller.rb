@@ -6,11 +6,11 @@ module Thredded
       @messageboard = messageboard
       @messageboards = Messageboard.where(closed: false).decorate
       @topics = messageboard.topics.on_page(current_page)
-      @decorated_topics = UserTopicDecorator.decorate_all(user, @topics)
+      @decorated_topics = TopicDecorator.decorate_all(@topics)
       @decorated_private_topics = Thredded::UserPrivateTopicDecorator
         .decorate_all(current_user, user.thredded_private_topics)
       @topic = @topics.first
-      @user_topic = UserTopicDecorator.new(user, @topic)
+      @user_topic = TopicDecorator.new(@topic)
       @posts = @topic.posts
       @new_topic = TopicForm.new(messageboard: messageboard)
       @new_private_topic = PrivateTopicForm.new(messageboard: messageboard)
