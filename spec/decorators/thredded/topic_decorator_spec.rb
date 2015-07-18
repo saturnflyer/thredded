@@ -10,11 +10,6 @@ module Thredded
       Thredded.user_path = ->(user) { "/i_am/#{user}" }
       user = create(:user, name: 'joel')
       topic = create(:topic, user: user)
-      create(
-        :user_topic_read,
-        topic: topic,
-        user: user,
-      )
       decorator = TopicDecorator.new(topic)
 
       expect(decorator.user_link).to eq "<a href='/i_am/joel'>joel</a>"
