@@ -33,11 +33,19 @@ Add a thredded initializer to your parent app by running the install generator.
 rails generate thredded:install
 ```
 
-Copy the themes (views and assets) into your parent application:
+Copy the themes (views and assets) into your parent application (if you want to use a theme) and set the theme in your config.
 
 ```
 rails generate thredded:themes
 ```
+
+In `config/initializers/thredded.rb` add the name of the theme as a symbol:
+
+```
+Thredded.theme = :default
+```
+
+
 
 Copy the migrations over to your parent application and migrate:
 
@@ -105,6 +113,7 @@ There are a few things you need in your app to get things looking just right.
 
   A couple of notes:
 
+  * NOTE: You must install and activate a theme before it will be used.
   * When using route helpers in the thredded views -- eg: `new_session_path`, et al -- make
     sure to prepend `main_app` to the helper: `main_app.new_session_path` as rails engines
     like thredded will not know about those routes' existence unless explicitly told so.
