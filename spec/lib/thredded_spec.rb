@@ -2,13 +2,6 @@ require 'pry'
 require 'spec_helper'
 
 describe Thredded, '.theme' do
-  it 'is added to the view path' do
-    Thredded.theme = :default
-    view_paths = ActionController::Base.view_paths.map(&:to_s)
-
-    expect(view_paths).to include("#{Rails.root}/app/themes/default/views")
-  end
-
   it 'is added to the asset path' do
     Thredded.theme = :default
     asset_paths = Thredded::Engine.config.assets.paths
